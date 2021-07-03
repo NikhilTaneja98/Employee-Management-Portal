@@ -1,0 +1,19 @@
+pipeline{
+agent any
+tools{
+maven 'maven'
+jdk 'Jdk-8'
+}
+stages{
+stage('git'){
+steps{
+git credentialsId:'gitnagarro',url:'https://git.nagarro.com/GITG00641/Java/3166762.git'
+}
+}
+stage('build'){
+steps{
+bat 'mvn -f HR-Manager-Project/pom.xml clean install'
+}
+}
+}
+}
